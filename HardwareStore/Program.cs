@@ -135,8 +135,22 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
-
+app.UseAuthentication();
+app.UseAuthorization(); 
 app.MapControllers();
 app.UseStaticFiles();
+
+// Un scope permite tener en un contexto los servicios inyectados previamente
+await using (var scope = app.Services.CreateAsyncScope())
+{
+    if (app.Environment.IsDevelopment())
+    {
+        var db = scope.ServiceProvider.GetRequiredService<HardwareStoreDbContext>();
+        await db.Database.MigrateAsync(); // Esto ejecuta las migraciones de forma automática.
+    }
+
+    // Aqui vamos a ejecutar la creacion del usuario admin y los roles por default
+    await UserDataSeeder.Seed(scope.ServiceProvider);
+}
 
 app.Run();
