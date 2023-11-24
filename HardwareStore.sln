@@ -1,0 +1,55 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.7.34009.444
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HardwareStore", "HardwareStore\HardwareStore.csproj", "{E05977D2-BD3E-4E19-8329-DB0D371A423D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HardwareStore.Entities", "HardwareStore.Entities\HardwareStore.Entities.csproj", "{5734D1D4-F489-4319-9FD4-CDA78A0D37E6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HardwareStore.Persistence", "HardwareStore.Persistence\HardwareStore.Persistence.csproj", "{7B5E5A4A-AF92-45F1-8AA8-983EA7922A50}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HardwareStore.Dto", "HardwareStore.Dto\HardwareStore.Dto.csproj", "{91239877-795D-4EAF-97D5-FAE192DE83E7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HardwareStore.Repositories", "HardwareStore.Repositories\HardwareStore.Repositories.csproj", "{F97BB533-BF8C-4FA9-87FB-3D96AE8244A0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HardwareStore.Services", "HardwareStore.Services\HardwareStore.Services.csproj", "{71A438A2-9B05-4124-B703-6DC182BF025A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{E05977D2-BD3E-4E19-8329-DB0D371A423D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E05977D2-BD3E-4E19-8329-DB0D371A423D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E05977D2-BD3E-4E19-8329-DB0D371A423D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E05977D2-BD3E-4E19-8329-DB0D371A423D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5734D1D4-F489-4319-9FD4-CDA78A0D37E6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5734D1D4-F489-4319-9FD4-CDA78A0D37E6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5734D1D4-F489-4319-9FD4-CDA78A0D37E6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5734D1D4-F489-4319-9FD4-CDA78A0D37E6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7B5E5A4A-AF92-45F1-8AA8-983EA7922A50}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7B5E5A4A-AF92-45F1-8AA8-983EA7922A50}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7B5E5A4A-AF92-45F1-8AA8-983EA7922A50}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7B5E5A4A-AF92-45F1-8AA8-983EA7922A50}.Release|Any CPU.Build.0 = Release|Any CPU
+		{91239877-795D-4EAF-97D5-FAE192DE83E7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{91239877-795D-4EAF-97D5-FAE192DE83E7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{91239877-795D-4EAF-97D5-FAE192DE83E7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{91239877-795D-4EAF-97D5-FAE192DE83E7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F97BB533-BF8C-4FA9-87FB-3D96AE8244A0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F97BB533-BF8C-4FA9-87FB-3D96AE8244A0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F97BB533-BF8C-4FA9-87FB-3D96AE8244A0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F97BB533-BF8C-4FA9-87FB-3D96AE8244A0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{71A438A2-9B05-4124-B703-6DC182BF025A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{71A438A2-9B05-4124-B703-6DC182BF025A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{71A438A2-9B05-4124-B703-6DC182BF025A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{71A438A2-9B05-4124-B703-6DC182BF025A}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {0AB76C5E-2175-4623-9168-74213DEBEF22}
+	EndGlobalSection
+EndGlobal
