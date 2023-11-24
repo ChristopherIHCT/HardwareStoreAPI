@@ -1,15 +1,17 @@
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Diagnostics;
+using Microsoft.IdentityModel.Tokens;
+using HardwareStore.Entities;
 using HardwareStore.Persistence;
 using HardwareStore.Repositories;
 using HardwareStore.Services.Implementations;
 using HardwareStore.Services.Interfaces;
 using HardwareStore.Services.Profiles;
-using Microsoft.EntityFrameworkCore.Diagnostics;
-using HardwareStore.Entities;
 using Serilog;
 using Serilog.Events;
 using System.Text;
-using HardwareStore.Repositories;
 
 var corsConfiguration = "HardwareStoreCors";
 var builder = WebApplication.CreateBuilder(args);
@@ -50,6 +52,22 @@ builder.Services.AddDbContext<HardwareStoreDbContext>(options =>
     options.ConfigureWarnings(x => x.Ignore(CoreEventId.SensitiveDataLoggingEnabledWarning));
 });
 
+builder.Services.AddIdentity<HardwareStoreUserIdentity, IdentityRole>(policies =>
+{
+    policies.Password.RequireDigit = true;
+    policies.Password.RequireLowercase = true;
+    policies.Password.RequireUppercase = false;
+    policies.Password.RequireNonAlphanumeric = true;
+    policies.Password.RequiredLength = 6;
+
+    policies.User.RequireUniqueEmail = true;
+
+    // Politica de bloque de cuentas
+    policies.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromMinutes(10);
+    policies.Lockout.MaxFailedAccessAttempts = 5;
+}).AddEntityFrameworkStores<HardwareStoreDbContext>()
+    .AddDefaultTokenProviders();
+
 // Transient - Siempre crea una instancia de la clase expuesta
 // Scoped - Utiliza la misma instancia por Sesion (en aplicaciones .NET que tengan frontend) - ASP.NET MVC/BLAZOR
 // Singleton - Utiliza la misma instancia por toda la aplicacion
@@ -67,6 +85,8 @@ builder.Services.AddTransient<ICategoryService, CategoryService>();
 builder.Services.AddTransient<IItemService, ItemService>();
 builder.Services.AddTransient<IInvoiceDetailsRepository, InvoiceDetailsRepository>();
 builder.Services.AddScoped<IInvoiceService, InvoiceService>();
+builder.Services.AddTransient<IUserService, UserService>();
+builder.Services.AddTransient<IEmailService, EmailService>();
 
 if (builder.Configuration.GetSection("StorageConfiguration:PublicUrl").Value!.Contains("core.windows.net"))
 {
@@ -82,6 +102,27 @@ builder.Services.AddAutoMapper(config =>
     config.AddProfile<CategoryProfile>();
     config.AddProfile<InvoiceProfile>();
     config.AddProfile<ItemsProfile>();
+});
+
+builder.Services.AddAuthentication(x =>
+{
+    x.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+    x.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+}).AddJwtBearer(x =>
+{
+    var key = Encoding.UTF8.GetBytes(builder.Configuration["Jwt:SecretKey"] ??
+                                     throw new InvalidOperationException("No se configuro el JWT"));
+
+    x.TokenValidationParameters = new TokenValidationParameters
+    {
+        ValidateIssuer = true,
+        ValidateAudience = true,
+        ValidateLifetime = true,
+        ValidateIssuerSigningKey = true,
+        ValidIssuer = builder.Configuration["Jwt:Issuer"],
+        ValidAudience = builder.Configuration["Jwt:Audience"],
+        IssuerSigningKey = new SymmetricSecurityKey(key)
+    };
 });
 
 var app = builder.Build();

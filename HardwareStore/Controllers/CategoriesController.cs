@@ -1,12 +1,14 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using HardwareStore.Dto.Request;
 using HardwareStore.Services.Interfaces;
-
 namespace HardwareStore.Controllers;
 
 
 [ApiController]
 [Route("api/[controller]")]
+[Authorize]
+
 public class CategoriesController : ControllerBase
 {
     private readonly ICategoryService _service;
@@ -17,6 +19,7 @@ public class CategoriesController : ControllerBase
     }
 
     [HttpGet]
+    [AllowAnonymous]
     public async Task<IActionResult> Get()
     {
         var response = await _service.ListAsync();
@@ -25,6 +28,7 @@ public class CategoriesController : ControllerBase
     }
 
     [HttpGet("{id:int}")]
+    [AllowAnonymous]
     public async Task<IActionResult> Get(int id)
     {
         var response = await _service.FindByIdAsync(id);

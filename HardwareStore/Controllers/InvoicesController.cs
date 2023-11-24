@@ -20,11 +20,11 @@ public class InvoicesController : ControllerBase
     }
 
     [HttpPost]
+    [Authorize]
     public async Task<IActionResult> Post([FromBody]InvoiceDtoRequest request)
     {
-        // Aqui recupero el correo del usuario autenticado.
-        var email = "prueba@gmail.com";
-        //_logger.LogInformation("Id del requester es: {ConnectionId}", HttpContext.Connection.Id);
+        var email = HttpContext.User.Claims.First(p => p.Type == ClaimTypes.Email).Value;
+        _logger.LogInformation("Id del requester es: {ConnectionId}", HttpContext.Connection.Id);
         var response = await _service.AddAsync(email, request);
 
         return response.Success ? Ok(response) : BadRequest(response);
