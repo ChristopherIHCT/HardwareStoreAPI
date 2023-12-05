@@ -7,7 +7,7 @@ using HardwareStore.Entities;
 
 namespace HardwareStore.Persistence
 {
-    public class HardwareStoreDbContext : DbContext
+    public class HardwareStoreDbContext : IdentityDbContext<HardwareStoreUserIdentity>
     {
         public HardwareStoreDbContext(DbContextOptions<HardwareStoreDbContext> options)
         : base(options)

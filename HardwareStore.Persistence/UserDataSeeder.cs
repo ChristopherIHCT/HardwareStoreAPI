@@ -32,7 +32,7 @@ public static class UserDataSeeder
             UserName = "admin@gmail.com",
             Email = "admin@gmail.com",
             PhoneNumber = "999 999 999",
-            Age = 30,
+            Age = 25,
             DocumentType = DocumentTypeEnum.Dni,
             DocumentNumber = "12345678",
             EmailConfirmed = true

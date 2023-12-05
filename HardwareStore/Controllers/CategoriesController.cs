@@ -2,6 +2,8 @@
 using Microsoft.AspNetCore.Mvc;
 using HardwareStore.Dto.Request;
 using HardwareStore.Services.Interfaces;
+using HardwareStore.Entities;
+
 namespace HardwareStore.Controllers;
 
 
@@ -37,6 +39,7 @@ public class CategoriesController : ControllerBase
     }
 
     [HttpPost]
+    [Authorize(Roles = Constantes.RolAdmin)]
     public async Task<IActionResult> Post(CategoryDtoRequest request)
     {
         var response = await _service.AddAsync(request);
@@ -45,6 +48,7 @@ public class CategoriesController : ControllerBase
     }
 
     [HttpPut("{id:int}")]
+    [Authorize(Roles = Constantes.RolAdmin)]
     public async Task<IActionResult> Put(int id, CategoryDtoRequest request)
     {
         var response = await _service.UpdateAsync(id, request);
@@ -53,6 +57,7 @@ public class CategoriesController : ControllerBase
     }
 
     [HttpDelete("{id:int}")]
+    [Authorize(Roles = Constantes.RolAdmin)]
     public async Task<IActionResult> Delete(int id)
     {
         var response = await _service.DeleteAsync(id);

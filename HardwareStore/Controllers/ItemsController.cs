@@ -1,10 +1,10 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using HardwareStore.Dto.Request;
 using HardwareStore.Services.Interfaces;
-using HardwareStore.Dto.Request;
+using Microsoft.AspNetCore.Authorization;
+using HardwareStore.Entities;
 
 namespace HardwareStore.Controllers;
-
 [ApiController]
 [Route("api/[controller]")]
 public class ItemsController : ControllerBase
@@ -42,6 +42,7 @@ public class ItemsController : ControllerBase
 
 
     [HttpPost]
+    [Authorize(Roles = Constantes.RolAdmin)]
     public async Task<IActionResult> Post([FromBody] ItemDtoRequest request)
     {
         var response = await _service.AddAsync(request);
@@ -50,13 +51,16 @@ public class ItemsController : ControllerBase
     }
 
     [HttpPut("{id:int}")]
+    [Authorize(Roles = Constantes.RolAdmin)]
     public async Task<IActionResult> Put(int id, [FromBody] ItemDtoRequest request)
     {
         var response = await _service.UpdateAsync(id, request);
         return response.Success ? Ok(response) : BadRequest(response);
     }
 
+
     [HttpDelete("{id:int}")]
+    [Authorize(Roles = Constantes.RolAdmin)]
     public async Task<IActionResult> Delete(int id)
     {
         var response = await _service.DeleteAsync(id);

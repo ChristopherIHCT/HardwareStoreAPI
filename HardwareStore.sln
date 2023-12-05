@@ -3,17 +3,19 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.7.34009.444
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HardwareStore", "HardwareStore\HardwareStore.csproj", "{E05977D2-BD3E-4E19-8329-DB0D371A423D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HardwareStore", "HardwareStore\HardwareStore.csproj", "{E05977D2-BD3E-4E19-8329-DB0D371A423D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HardwareStore.Entities", "HardwareStore.Entities\HardwareStore.Entities.csproj", "{5734D1D4-F489-4319-9FD4-CDA78A0D37E6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HardwareStore.Entities", "HardwareStore.Entities\HardwareStore.Entities.csproj", "{5734D1D4-F489-4319-9FD4-CDA78A0D37E6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HardwareStore.Persistence", "HardwareStore.Persistence\HardwareStore.Persistence.csproj", "{7B5E5A4A-AF92-45F1-8AA8-983EA7922A50}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HardwareStore.Persistence", "HardwareStore.Persistence\HardwareStore.Persistence.csproj", "{7B5E5A4A-AF92-45F1-8AA8-983EA7922A50}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HardwareStore.Dto", "HardwareStore.Dto\HardwareStore.Dto.csproj", "{91239877-795D-4EAF-97D5-FAE192DE83E7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HardwareStore.Dto", "HardwareStore.Dto\HardwareStore.Dto.csproj", "{91239877-795D-4EAF-97D5-FAE192DE83E7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HardwareStore.Repositories", "HardwareStore.Repositories\HardwareStore.Repositories.csproj", "{F97BB533-BF8C-4FA9-87FB-3D96AE8244A0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HardwareStore.Repositories", "HardwareStore.Repositories\HardwareStore.Repositories.csproj", "{F97BB533-BF8C-4FA9-87FB-3D96AE8244A0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HardwareStore.Services", "HardwareStore.Services\HardwareStore.Services.csproj", "{71A438A2-9B05-4124-B703-6DC182BF025A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HardwareStore.Services", "HardwareStore.Services\HardwareStore.Services.csproj", "{71A438A2-9B05-4124-B703-6DC182BF025A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HardwareStoreHealthCheckApi", "HardwareStoreHealthCheck\HardwareStoreHealthCheckApi.csproj", "{AA7ADD00-BC80-4515-A2BA-863AEA00AF9C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -45,6 +47,10 @@ Global
 		{71A438A2-9B05-4124-B703-6DC182BF025A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{71A438A2-9B05-4124-B703-6DC182BF025A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{71A438A2-9B05-4124-B703-6DC182BF025A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AA7ADD00-BC80-4515-A2BA-863AEA00AF9C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AA7ADD00-BC80-4515-A2BA-863AEA00AF9C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AA7ADD00-BC80-4515-A2BA-863AEA00AF9C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AA7ADD00-BC80-4515-A2BA-863AEA00AF9C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

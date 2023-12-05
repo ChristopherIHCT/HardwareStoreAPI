@@ -12,6 +12,7 @@ using HardwareStore.Services.Profiles;
 using Serilog;
 using Serilog.Events;
 using System.Text;
+using HardwareStore.Endpoints;
 
 var corsConfiguration = "HardwareStoreCors";
 var builder = WebApplication.CreateBuilder(args);
@@ -135,8 +136,13 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+
 app.UseAuthentication();
-app.UseAuthorization(); 
+app.UseAuthorization();
+
+app.UseCors(corsConfiguration);
+app.MapHomeEndpoints();
+
 app.MapControllers();
 app.UseStaticFiles();
 

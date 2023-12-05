@@ -31,6 +31,7 @@ public class InvoicesController : ControllerBase
     }
 
     [HttpGet("{id:int}")]
+    [Authorize]
     public async Task<IActionResult> Get(int id)
     {
         var response = await _service.FindByIdAsync(id);
