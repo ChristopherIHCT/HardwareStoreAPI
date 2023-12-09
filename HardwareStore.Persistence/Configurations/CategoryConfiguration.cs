@@ -19,9 +19,9 @@ public class CategoryConfiguration : IEntityTypeConfiguration<Category>
 
         builder.HasData(new List<Category>
         {
-            new() { Id = 1, Name = "Electricidad", CreationDate = fecha},
-            new() { Id = 2, Name = "Fontaneria" , CreationDate = fecha},
-            new() { Id = 3, Name = "Herramientas" , CreationDate = fecha},
+            new() { Id = 1, Name = "Electricidad",ImageUrl="https://localhost:7000/imagenes//electricidad.jpg", CreationDate = fecha},
+            new() { Id = 2, Name = "Fontaneria", ImageUrl="https://localhost:7000/imagenes//fontaneria.jpg", CreationDate = fecha},
+            new() { Id = 3, Name = "Herramientas", ImageUrl="https://localhost:7000/imagenes//herramientas.jpg" , CreationDate = fecha},
         });
     }
 }

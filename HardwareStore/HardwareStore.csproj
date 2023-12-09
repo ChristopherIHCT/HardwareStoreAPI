@@ -35,8 +35,4 @@
     <ProjectReference Include="..\HardwareStore.Services\HardwareStore.Services.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="wwwroot\imagenes\" />
-  </ItemGroup>
-
 </Project>
