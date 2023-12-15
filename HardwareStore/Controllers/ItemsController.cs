@@ -42,7 +42,7 @@ public class ItemsController : ControllerBase
 
 
     [HttpPost]
-    [Authorize(Roles = Constantes.RolAdmin)]
+   
     public async Task<IActionResult> Post([FromBody] ItemDtoRequest request)
     {
         var response = await _service.AddAsync(request);

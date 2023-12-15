@@ -13,6 +13,9 @@ namespace HardwareStore.Dto.Response
         public string ItemName { get; set; } = string.Empty;
         public string BarCode { get; set; } = string.Empty;
         public int CategoryId { get; set; }
+
+
+        public int Price { get; set; }
         public double Stock { get; set; }
         public string? ImageUrl { get; set; }
 

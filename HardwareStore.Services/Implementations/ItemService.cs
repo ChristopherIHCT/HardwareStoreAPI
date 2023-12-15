@@ -6,6 +6,7 @@ using HardwareStore.Dto.Response;
 using HardwareStore.Entities;
 using HardwareStore.Repositories;
 using HardwareStore.Services.Interfaces;
+using Microsoft.IdentityModel.Tokens;
 
 namespace HardwareStore.Services.Implementations;
 
@@ -30,12 +31,17 @@ public class ItemService : IItemService
 
         try
         {
-            var tupla = await _repository.ListAsync(predicate: c => c.ItemName.Contains(search.ItemName ?? string.Empty) && c.CategoryId.Equals(search.CategoryId),
+            // Modifica la condición de búsqueda basada en si search.CategoryId está presente o no
+            var tupla = await _repository.ListAsync(
+                predicate: c =>
+                    (string.IsNullOrEmpty(search.ItemName) || c.ItemName.Contains(search.ItemName)) &&
+                (!search.CategoryId.HasValue || c.CategoryId.Equals(search.CategoryId.Value)),
                 selector: p => _mapper.Map<ItemDtoResponse>(p),
                 orderby: p => p.ItemName,
                 page: search.Page,
                 rows: search.Rows,
-                relationships: "Category");
+                relationships: "Category"
+            );
 
             response.Data = tupla.Collection;
             response.TotalPages = Utilities.GetTotalPages(tupla.Total, search.Rows);
